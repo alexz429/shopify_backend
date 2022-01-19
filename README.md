@@ -8,4 +8,13 @@ npm install
 npm start
 ```
 
+Fill out mysql database credentials in a `.env` file
+
+```
+USER=u
+PASS=p
+DBNAME=d
+HOST=h
+```
+
 The website should be active at localhost:3001
