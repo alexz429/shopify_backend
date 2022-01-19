@@ -57,7 +57,6 @@ app.post('/delete', (req, res) => {
 */
 app.post('/create', (req, res) => {
     const data = req.body;
-    console.log(data);
     if( !data['name'] || !data['count'] || !Number.isInteger(data['count']) || parseInt(data['count']) < 0){
         res.status(400);
         return res.send('Invalid input data');
@@ -85,7 +84,7 @@ app.post('/edit', (req, res) => {
 
 app.use(express.static('build'))
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () =>
   console.log(`App listening on port ${PORT}!`),
 );
