@@ -3,6 +3,7 @@ import express from 'express';
 import mysql from 'mysql2';
 import cors from 'cors';
 import { Parser } from 'json2csv';
+import path from 'path';
 const app = express();
 const convert = new Parser();
 app.use(cors());
@@ -83,6 +84,8 @@ app.post('/edit', (req, res) => {
         res.sendStatus(200);
     });
 });
+
+app.use(express.static('build'))
 
 app.listen(process.env.PORT, () =>
   console.log(`App listening on port ${process.env.PORT}!`),
