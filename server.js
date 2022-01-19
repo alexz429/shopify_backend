@@ -15,14 +15,12 @@ app.use(express.json());
     ItemCount int
 )
 */
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASS,
     database: process.env.DBNAME
 });
-
-db.connect();
 
 app.get('/export', (req, res) => {
     db.query('SELECT * FROM Items', (err, rows, fields) => {
@@ -87,6 +85,7 @@ app.post('/edit', (req, res) => {
 
 app.use(express.static('build'))
 
-app.listen(process.env.PORT, () =>
-  console.log(`App listening on port ${process.env.PORT}!`),
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () =>
+  console.log(`App listening on port ${PORT}!`),
 );
